@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OSINT | Digital Resistance</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #050505;
+            --card: #111111;
+            --accent: #00f2ff;
+            --danger: #ff4d4d;
+            --text: #ffffff;
+            --text-dim: #a0a0a0;
+        }
+
+        * { box-sizing: border-box; transition: 0.3s; }
+        body { 
+            background-color: var(--bg); 
+            color: var(--text); 
+            font-family: 'Space Grotesk', sans-serif; 
+            margin: 0; 
+            line-height: 1.6;
+        }
+
+        .container { width: 90%; max-width: 1100px; margin: auto; }
+
+        /* HEADER */
+        header { padding: 25px 0; border-bottom: 1px solid #222; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.8rem; font-weight: 700; color: var(--danger); text-decoration: none; letter-spacing: 4px; }
+        .logo span { color: var(--accent); }
+
+        /* HERO */
+        #hero { padding: 80px 0 40px; text-align: center; }
+        .tagline { font-family: 'JetBrains Mono'; color: var(--accent); font-size: 0.8rem; letter-spacing: 3px; margin-bottom: 10px; }
+        #hero h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); margin: 0; text-transform: uppercase; line-height: 1; }
+        .glitch { color: var(--danger); }
+        #hero p { color: var(--text-dim); font-size: 1.2rem; margin: 25px auto 40px; max-width: 700px; }
+
+        /* ACTION GRID */
+        .action-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-bottom: 60px; }
+        .card { 
+            background: var(--card); 
+            border: 1px solid #222; 
+            padding: 35px; 
+            border-radius: 15px; 
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+        }
+        .card:hover { border-color: var(--accent); transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0, 242, 255, 0.1); }
+        .card h3 { margin-top: 0; color: var(--accent); font-size: 1.5rem; }
+
+        /* BUTTONS */
+        .btn { 
+            display: inline-block; width: 100%; padding: 16px; text-align: center; 
+            text-decoration: none; font-weight: 700; border-radius: 8px; cursor: pointer;
+            text-transform: uppercase; letter-spacing: 1px;
+        }
+        .btn-red { background: var(--danger); color: white; border: none; }
+        .btn-red:hover { background: #ff1a1a; box-shadow: 0 0 20px rgba(255, 77, 77, 0.4); }
+        .btn-outline { border: 2px solid var(--accent); color: var(--accent); background: transparent; }
+        .btn-outline:hover { background: var(--accent); color: #000; }
+
+        /* WALL OF SHAME */
+        #wall { padding: 40px 0; }
+        .section-title { color: var(--danger); font-size: 1.8rem; border-bottom: 1px solid #333; padding-bottom: 10px; margin-bottom: 30px; }
+        .report-link { 
+            background: #0c0c0c; 
+            border-left: 4px solid var(--danger); 
+            padding: 25px; 
+            border-radius: 0 10px 10px 0;
+        }
+        .report-link h4 { margin: 0 0 10px 0; color: #fff; font-size: 1.3rem; }
+        .report-link a { color: var(--accent); text-decoration: none; font-weight: bold; }
+
+        /* MODAL */
+        .modal { 
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+            background: rgba(0,0,0,0.9); display: none; z-index: 1000; 
+            overflow-y: auto; padding: 20px;
+        }
+        .modal-content { max-width: 800px; margin: 30px auto; background: var(--card); padding: 30px; border-radius: 15px; border: 1px solid var(--accent); }
+        .close { float: right; color: var(--danger); cursor: pointer; font-weight: bold; font-family: 'JetBrains Mono'; }
+
+        /* FORM */
+        form input, form textarea { 
+            width: 100%; background: #1a1a1a; border: 1px solid #333; color: #fff; 
+            padding: 12px; margin: 10px 0; border-radius: 6px; font-family: 'JetBrains Mono';
+        }
+
+        /* MOBILE FIXES */
+        @media (max-width: 600px) {
+            #hero { padding: 40px 0; }
+            .action-grid { grid-template-columns: 1fr; }
+            header { flex-direction: column; gap: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <a href="#" class="logo">O<span>SINT</span></a>
+        <div style="font-family: 'JetBrains Mono'; font-size: 0.75rem; color: #0f0;">● SYSTEM_STATUS: ARMED</div>
+    </header>
+
+    <section id="hero">
+        <div class="tagline">// WE ARE THE ONES WHO FIGHT BACK</div>
+        <h1>THE <span class="glitch">PREY</span> STRIKES</h1>
+        <p>We aren't scientists. We are victims of scams who refused to stay silent. We use OSINT to track the predators and expose their networks.</p>
+        
+        <div class="action-grid">
+            <div class="card">
+                <h3>Report a Scammer</h3>
+                <p>Submit details to our public watchlist using our secure reporting channel.</p>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSc8JIlJllWeqRV5r8slNXtGQmh5zbpOmTCi3Pr34-U4JnyoRw/viewform?usp=header" target="_blank" class="btn btn-red">Submit Report</a>
+            </div>
+
+            <div class="card">
+                <h3>Private Investigation</h3>
+                <p>Log detailed evidence into our local intelligence database for community tracing.</p>
+                <button onclick="openModal('investigateModal')" class="btn btn-outline">Start Intel Trace</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="wall">
+        <div class="section-title">WALL OF SHAME // RECENT BUSTS</div>
+        <div class="report-link">
+            <h4>Baguio POGO Hub Neutralized</h4>
+            <p>Authorities raided a major "scam hub" involved in cryptocurrency fraud and human trafficking. This is why we fight.</p>
+            <a href="https://www.pna.gov.ph/articles/1264197" target="_blank">View Official Investigation Report →</a>
+        </div>
+    </section>
+
+    <section style="padding: 60px 0; border-top: 1px solid #222; margin-top: 40px;">
+        <h2 style="color: var(--accent);">About Us</h2>
+        <p>This site was built by people who have lost money and trust to scammers. We realized that waiting for others to help wasn't enough. We taught ourselves Open Source Intelligence (OSINT) to identify, track, and expose the people behind the screens. We are the resistance.</p>
+    </section>
+</div>
+
+<div id="investigateModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('investigateModal')">[ EXIT_STATION ]</span>
+        <h2 style="color: var(--accent);">INTERNAL INTEL LOG</h2>
+        <p style="font-family: 'JetBrains Mono'; font-size: 0.8rem; color: var(--text-dim);">Saving data to local_storage.v1</p>
+        
+        <form id="localDbForm">
+            <input type="text" id="targetName" placeholder="Target Alias / Scammer Name" required>
+            <input type="text" id="targetContact" placeholder="Phone Number / Telegram ID" required>
+            <textarea id="intel" rows="5" placeholder="Evidence: Wallet addresses, links, or conversation logs..."></textarea>
+            <button type="submit" class="btn btn-outline">Lock into Database</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    function openModal(id) { document.getElementById(id).style.display = 'block'; }
+    function closeModal(id) { document.getElementById(id).style.display = 'none'; }
+
+    // Logic for the Local Investigation Form
+    document.getElementById('localDbForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const entry = {
+            name: document.getElementById('targetName').value,
+            contact: document.getElementById('targetContact').value,
+            intel: document.getElementById('intel').value,
+            timestamp: new Date().toLocaleString()
+        };
+
+        // Saving to Browser LocalStorage
+        let currentLogs = JSON.parse(localStorage.getItem('osint_investigations')) || [];
+        currentLogs.push(entry);
+        localStorage.setItem('osint_investigations', JSON.stringify(currentLogs));
+
+        alert('SUCCESS: Target logged to local database. Keep fighting.');
+        this.reset();
+        closeModal('investigateModal');
+    });
+
+    // Close modal if user clicks outside of it
+    window.onclick = function(event) {
+        if (event.target.className === 'modal') {
+            event.target.style.display = "none";
+        }
+    }
+</script>
+
+</body>
+</html>
